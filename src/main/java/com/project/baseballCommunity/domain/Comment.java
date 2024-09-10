@@ -1,8 +1,10 @@
 package com.project.baseballCommunity.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class Comment {
 
     @Id @GeneratedValue

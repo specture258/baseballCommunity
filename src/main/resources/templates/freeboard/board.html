@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>제목</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.getId()}"></td>
+            <td>
+                <a th:href="@{|/baseball/freeboard/${post.getId()}|}" th:text="${post.getTitle()}" ></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<div>
+    <button onclick="location.href='/baseball/freeboard/register'">게시글 등록</button>
+</div>
+
+</body>
+</html>

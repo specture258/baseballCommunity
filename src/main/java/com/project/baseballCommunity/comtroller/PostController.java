@@ -1,6 +1,8 @@
 package com.project.baseballCommunity.comtroller;
 
+import com.project.baseballCommunity.domain.Comment;
 import com.project.baseballCommunity.domain.Post;
+import com.project.baseballCommunity.service.CommentService;
 import com.project.baseballCommunity.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final CommentService commentService;
 
     @GetMapping("/baseball/freeboard")
     public String getAllPosts(Model model){
@@ -35,9 +38,10 @@ public class PostController {
     }
 
     @GetMapping("/baseball/freeboard/{id}")
-    public String postDetail(@PathVariable Long id, Model model){
+    public String postDetail(@PathVariable Long id, Model model, Comment comment){
         Post post = postService.getPostById(id);
         model.addAttribute("post", post);
+        model.addAttribute("comment", comment);
         return "freeboard/postDetail";
     }
 

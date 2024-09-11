@@ -9,8 +9,33 @@
 <body>
         <h2 th:text="${post.getTitle()}"></h2>
 
-        <p th:text="${post.getContent()}"></p>
+        <h4 th:text="${post.getContent()}"></h4>
 
+        <div>
+
+        </div>
+            <p>댓글</p>
+            <div th:each="comment : ${post.getComment()}">
+                <div th:text="${comment.getContent()}"></div>
+            </div>
+
+        <div>
+        <p>댓글 작성</p>
+        <form th:action="@{{id}(id=${post.getId()})}"   method="post">
+
+            <!-- 내용 입력 필드 -->
+            <div class="form-group">
+                <textarea id="content" name="content" placeholder="내용을 입력하세요" ></textarea>
+            </div>
+
+            <!-- 제출 버튼 -->
+            <button type="submit">등록</button>
+        </form>
+        </div>
+
+        <div>
+            <button onclick="location.href='/baseball/freeboard'">뒤로가기</button>
+        </div>
 
 </body>
 </html>

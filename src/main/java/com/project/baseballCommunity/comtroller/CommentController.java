@@ -19,7 +19,6 @@ import java.util.List;
 public class CommentController {
 
     private final CommentService commentService;
-    private final PostService postService;
 
 
     @PostMapping("/baseball/freeboard/{id}")

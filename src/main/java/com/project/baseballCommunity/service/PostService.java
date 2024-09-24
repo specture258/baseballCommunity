@@ -30,6 +30,18 @@ public class PostService {
         savePost(post);
     }
 
+    public void deletePost(Long id) {
+        Post post = getPostById(id);
+        postRepository.delete(post);
+
+    }
+
+    public void modifyPost(Long id, String title, String content) {
+        Post post = getPostById(id);
+        post.update(title, content);
+        savePost(post);
+    }
+
 
 
 }

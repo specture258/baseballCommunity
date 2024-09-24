@@ -20,7 +20,7 @@
             </div>
 
         <div>
-        <p>댓글 작성</p>
+        <label>댓글 작성</label>
         <form th:action="@{{id}(id=${post.getId()})}"   method="post">
 
             <!-- 내용 입력 필드 -->
@@ -35,6 +35,14 @@
 
         <div>
             <button onclick="location.href='/baseball/freeboard'">뒤로가기</button>
+        </div>
+
+        <div>
+            <button type="button" th:onclick="|location.href='@{/baseball/freeboard/delete(id=${post.getId()})}'|">글 삭제</button>
+        </div>
+
+        <div>
+            <a th:href="@{/baseball/freeboard/modify/{id} (id=${post.getId()})}">글 수정</a>
         </div>
 
 </body>

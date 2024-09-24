@@ -38,12 +38,35 @@ public class PostController {
     }
 
     @GetMapping("/baseball/freeboard/{id}")
-    public String postDetail(@PathVariable Long id, Model model, Comment comment){
+    public String postDetail(@PathVariable Long id, Model model,Comment comment){
         Post post = postService.getPostById(id);
         model.addAttribute("post", post);
         model.addAttribute("comment", comment);
         return "freeboard/postDetail";
     }
+
+    @GetMapping("/baseball/freeboard/delete")
+    public String deletePost(@RequestParam(value="id") Long id){
+        postService.deletePost(id);
+        return "redirect:/baseball/freeboard";
+    }
+
+    @GetMapping("/baseball/freeboard/modify/{id}")
+    public String modifyPost(@PathVariable Long id, Model model){
+        Post post = postService.getPostById(id);
+        PostForm form = new PostForm(post.getTitle(), post.getContent());
+        model.addAttribute("form", form);
+        return "/freeboard/modify";
+    }
+
+    @PostMapping("/baseball/freeboard/modify/{id}")
+    public String modifyPost(@ModelAttribute PostForm postForm, @PathVariable Long id){
+
+        postService.modifyPost(id, postForm.getTitle(), postForm.getContent());
+        return "redirect:/baseball/freeboard";
+    }
+
+
 
 
 

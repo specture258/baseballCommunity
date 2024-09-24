@@ -18,7 +18,7 @@
 
         <tbody>
         <tr th:each="post : ${posts}">
-            <td th:text="${post.getId()}"></td>
+            <td th:text="${post.getId()}+."></td>
             <td>
                 <a th:href="@{|/baseball/freeboard/${post.getId()}|}" th:text="${post.getTitle()}" ></a>
             </td>

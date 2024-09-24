@@ -29,6 +29,10 @@ public class PostRepository {
         return em.find(Post.class, id);
     }
 
+    public void delete(Post post){
+        em.remove(post);
+    }
+
 
 
 }

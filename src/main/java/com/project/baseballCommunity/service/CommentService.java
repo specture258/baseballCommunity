@@ -34,5 +34,10 @@ public class CommentService {
         saveComment(comment);
     }
 
+    public void deleteComment(Long id){
+        Comment comment = getCommentById(id);
+        commentRepository.delete(comment);
+    }
+
 
 }

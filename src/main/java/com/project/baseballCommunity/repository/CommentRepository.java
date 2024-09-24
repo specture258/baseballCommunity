@@ -1,6 +1,7 @@
 package com.project.baseballCommunity.repository;
 
 import com.project.baseballCommunity.domain.Comment;
+import com.project.baseballCommunity.domain.Post;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
@@ -27,5 +28,9 @@ public class CommentRepository {
 
     public Comment findById(Long id) {
         return em.find(Comment.class, id);
+    }
+
+    public void delete(Comment comment){
+        em.remove(comment);
     }
 }
